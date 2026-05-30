@@ -23,3 +23,7 @@ Open the site locally in your browser:
 # or run a simple HTTP server:
 python -m http.server 8000
 # then open http://localhost:8000
+
+
+<img width="1763" height="3560" alt="Screenshot_30-5-2026_21110_" src="https://github.com/user-attachments/assets/1d015cbb-81e8-40a3-a296-2b6374af1e4f" />
+
