@@ -20,6 +20,5 @@ Open the site locally in your browser:
 
 ```bash
 # From the project folder, open index.html in your browser (double-click)
-# or run a simple HTTP server:
-python -m http.server 8000
-# then open http://localhost:8000
+# 
+
