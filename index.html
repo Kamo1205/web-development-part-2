@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baker's Delights - Freshly Baked Goodness</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #6F4E37; /* Coffee Brown */
+            --secondary-color: #D4A373; /* Golden Biscuit */
+            --accent-color: #FFF0F5; /* Lavender Blush */
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+            --bg-color: #FFFAF5; /* Cream White */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            background-color: #c59260;
+        }
+
+        /* --- About Section --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            background: url('https://images.unsplash.com/photo-1517433670267-30f41c09da7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* --- Menu Section --- */
+        #menu {
+            background-color: #fff;
+            border-radius: 20px;
+            margin: 2rem auto 5rem auto;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+            padding: 4rem 5%;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .menu-item {
+            background: var(--bg-color);
+            border: 1px solid rgba(0,0,0,0.03);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .menu-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Fallback backgrounds */
+        .m-croissant { background-image: url('https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80'); background-color: #eee; }
+        .m-cake { background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80'); background-color: #eee; }
+        .m-bread { background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80'); background-color: #eee; }
+        .m-cupcake { background-image:url('https://simplewhisk.com/wp-content/uploads/2025/04/Easy-Vanilla-Cupcakes-Recipe1-768x960.png'); background-color: #eee; }
+        .m-coffee { background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=500&q=80'); background-color: #eee; }
+        .m-artisan { background-image: url('https://i.pinimg.com/originals/be/7d/30/be7d303dac3645681ac7b0c38225c6f0.jpg'); background-color: #eee; }
+
+        .menu-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .menu-content h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            display: block;
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-content p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- FIXED Contact Section --- */
+        /* Light background, centered, dark text */
+        #contact {
+            background-color: #FFFFFF;
+            color: var(--text-dark);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .contact-item h4::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            
+            .hero-content h1 { font-size: 2.5rem; }
+            
+            .about-content { grid-template-columns: 1fr; gap: 2rem; }
+            .about-image { height: 300px; order: -1; }
+            
+            .section-title { font-size: 2rem; }
+            
+            .contact-content {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Baker's Delights</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Freshly Baked<br>Daily Goodness</h1>
+                <p>Artisan pastries, breads, and cakes made with love using traditional recipes and the finest ingredients.</p>
+                <a href="#menu" class="cta-button">View Menu</a>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="about" class="container">
+            <h2 class="section-title">Our Story</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Baked with Passion</h3>
+                    <p>At Baker's Delights, we believe that great baking is an art form. Founded in 2015 in the heart of Polokwane, our bakery has been serving the community with fresh, high-quality treats daily.</p>
+                    <p>We source only the finest local ingredients and follow time-honored recipes to ensure every bite is perfect. Whether it's a flaky croissant or a custom celebration cake, we put our heart into every creation.</p>
+                </div>
+                <div class="about-image" aria-label="Fresh pastries"></div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu">
+            <h2 class="section-title">Featured Menu</h2>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-item">
+                    <div class="menu-image m-croissant"></div>
+                    <div class="menu-content">
+                        <h3>Butter Croissants</h3>
+                        <span class="price">R35</span>
+                        <p>Flaky, golden croissants.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="menu-item">
+                    <div class="menu-image m-cake"></div>
+                    <div class="menu-content">
+                        <h3>Chocolate Cake</h3>
+                        <span class="price">R180</span>
+                        <p>Rich cocoa cake with a silky buttercream finish.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="menu-item">
+                    <div class="menu-image m-bread"></div>
+                    <div class="menu-content">
+                        <h3>Sourdough Bread</h3>
+                        <span class="price">R30</span>
+                        <p>Handcrafted with natural lavain.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="menu-item">
+                    <div class="menu-image m-cupcake"></div>
+                    <div class="menu-content">
+                        <h3>Vanilla Cupcakes</h3>
+                        <span class="price">R20</span>
+                        <p>Light cupcakes with buttercream.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="menu-item">
+                    <div class="menu-image m-coffee"></div>
+                    <div class="menu-content">
+                        <h3>Fresh Coffee</h3>
+                        <span class="price">R25</span>
+                        <p>Premium roasted coffee.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="menu-item">
+                    <div class="menu-image m-artisan"></div>
+                    <div class="menu-content">
+                        <h3>Artisan Bread</h3>
+                        <span class="price">R40</span>
+                        <p>Traditional White.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-item">
+                    <h4>Location</h4>
+                    <p>123 Bakery Street</p>
+                    <p>Polokwane, 0699</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Hours</h4>
+                    <p>Mon - Fri: 7:00 AM - 5:00 PM</p>
+                    <p>Sat - Sun: 8:00 AM - 2:00 PM</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Contact</h4>
+                    <p>Tel: +27 87 557 8765</p>
+                    <p>Email: hello@bakersdelights.co.za</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
